@@ -149,7 +149,7 @@ private:
     Local<Value> value = obj->Get(Nan::New<String>(name).ToLocalChecked());
     
     if (value->IsNumber()) {
-      return value->Int32Value();
+      return Nan::To<int32_t>(value).FromJust();
     }
     
     return 0;
@@ -160,7 +160,7 @@ private:
     Local<Value> value = obj->Get(Nan::New<String>(name).ToLocalChecked());
     
     if (value->IsBoolean()) {
-      return value->BooleanValue();
+      return Nan::To<bool>(value).FromJust();
     }
     
     return false;
